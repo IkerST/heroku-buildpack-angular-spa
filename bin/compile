@@ -81,7 +81,7 @@ wget -O - https://ftp.pcre.org/pub/pcre/pcre-$pcre_version.tar.gz | tar xzf - -C
 mkdir $build_dir/vendor/pcre
 
 status "Downloading and installing nginx"
-nginx_version=${NGINX_VER:-1.6.2}
+nginx_version=${NGINX_VER:-1.9.9}
 nginx_url="http://nginx.org/download/nginx-$nginx_version.tar.gz"
 wget -O - $nginx_url | tar xzf - -C $build_dir/vendor
 mkdir $build_dir/vendor/nginx
