@@ -51,7 +51,7 @@ fi
 status "Downloading and installing node"
 node_url="http://s3pository.heroku.com/node/v$node_version/node-v$node_version-linux-x64.tar.gz"
 status "Downloading $node_url"
-wget -qO - $node_url | tar xzf - -C $build_dir
+wget -O - $node_url | tar xzf - -C $build_dir
 
 
 # Move node (and npm) into ./vendor and make them executable
@@ -77,13 +77,13 @@ cd $build_dir
 
 status "Downloading and installing pcre"
 pcre_version=${PCRE_VER:-8.42}
-wget -qO - ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$pcre_version.tar.gz | tar xzf - -C $build_dir/vendor
+wget -O - ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$pcre_version.tar.gz | tar xzf - -C $build_dir/vendor
 mkdir $build_dir/vendor/pcre
 
 status "Downloading and installing nginx"
 nginx_version=${NGINX_VER:-1.6.2}
 nginx_url="http://nginx.org/download/nginx-$nginx_version.tar.gz"
-wget -qO - $nginx_url | tar xzf - -C $build_dir/vendor
+wget -O - $nginx_url | tar xzf - -C $build_dir/vendor
 mkdir $build_dir/vendor/nginx
 cd $build_dir/vendor/nginx-$nginx_version
 ./configure --with-pcre=$build_dir/vendor/pcre-${pcre_version} --with-pcre-opt="--prefix=$build_dir/vendor/pcre" --with-http_ssl_module --prefix=$build_dir/vendor/nginx 2>&1 | indent
